@@ -1,0 +1,3 @@
+# Water Intake Tracker Odoo14 Module - Requirements
+
+No additional requirements are needed for this Odoo14 Water Intake Tracker Module. The module seamlessly integrates with the existing Odoo 14 environment, ensuring a straightforward installation process without any external dependencies. Simply follow the installation instructions in the README.md file to set up and start using the module within your Odoo instance.

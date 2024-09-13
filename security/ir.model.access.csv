@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+
+access_water_intake,access_water_intake,model_water_intake,,1,1,1,1
+access_related_water_intake,access_related_water_intake,model_related_water_intake,,1,1,1,1
+
+
+

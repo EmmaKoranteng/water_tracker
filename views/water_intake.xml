@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="Water_Intake_form_view" model="ir.ui.view">
+            <field name="name">WaterIntake.form</field>
+            <field name="model">water.intake</field>
+            <field name="arch" type="xml">
+                <form string="Hydration record">
+                    <header>
+                        <button name="action_pending" type="object" string="Pending" class="oe_highlight"
+                                states="draft"/>
+                        <button name="action_done" type="object" string="Done" class="oe_highlight" states="pending"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,pending,done"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="form_seq"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="date"/>
+<!--                                <field name="daily_goal"/>-->
+                                <field name="progress" widget="progressbar"/>
+
+                            </group>
+                            <group>
+                                <field name="daily_goal"/>
+                            </group>
+                            <field name="water_intake_id" widget="section_and_note_one2many" nolabel="1"
+                                   attrs="{'invisible': [('state', 'in', ['draft'])]}">
+                                <tree editable="bottom">
+                                    <field name="time_taken"/>
+                                    <field name="intake"/>
+                                    <!--                                    <field name="unit"/>-->
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="water_intake_graph_view" model="ir.ui.view">
+            <field name="name">Water Intake</field>
+            <field name="model">water.intake</field>
+            <field name="arch" type="xml">
+                <graph>
+                    <field name="date"/>
+                    <field name="progress" widget="progressbar"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="WaterIntake_tree_view" model="ir.ui.view">
+            <field name="name">water_intake.tree</field>
+            <field name="model">water.intake</field>
+            <field name="arch" type="xml">
+                <tree string="Water Intake">
+                    <field name="form_seq"/>
+                    <field name="date"/>
+                    <field name="daily_goal"/>
+                    <field name="progress" widget="progressbar"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="Water_Intake_search_view" model="ir.ui.view">
+            <field name="name">Water_Intake.search</field>
+            <field name="model">water.intake</field>
+            <field name="arch" type="xml">
+                <search string="Water Intake">
+                    <field name="form_seq"/>
+
+                    <!--                    <group expand="1" string="Group By">-->
+                    <!--                        <filter string="Example Field" name="example_field" domain="[]"-->
+                    <!--                                context="{'group_by':'example_field'}"/>-->
+                    <!--                    </group>-->
+                </search>
+            </field>
+        </record>
+
+        <record id="water_intake_act_window" model="ir.actions.act_window">
+            <field name="name">Water Intake</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">water.intake</field>
+            <field name="view_mode">tree,form,graph</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There are no records.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Water Intake" id="water_intake_menu" action="water_intake_act_window" sequence="3"/>
+
+    </data>
+</odoo>
